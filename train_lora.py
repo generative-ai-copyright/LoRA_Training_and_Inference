@@ -4,7 +4,7 @@ import subprocess
 
 def train_lora(base_model="runwayml/stable-diffusion-v1-5",
                output_dir=os.getcwd(), dataset=None,
-               num_train_epochs=100, checkpointing_steps=1500, max_train_steps=2000,
+               num_train_epochs=100, checkpointing_steps=40, max_train_steps=2000,
                learning_rate=1e-04, max_grad_norm=1, mixed_precision="bf16",
                script='text_to_image', instance_prompt=None, validation_prompt=None, train_text_encoder=False):
     command = ""
@@ -28,7 +28,7 @@ def train_lora(base_model="runwayml/stable-diffusion-v1-5",
             '--max_grad_norm=' + str(max_grad_norm),
             '--lr_scheduler=constant',
             '--lr_warmup_steps=0',
-            '--seed=216',
+            '--seed=504954',
             '--output_dir=' + str(output_dir),
             '--report_to=wandb',
             '--validation_prompt=' + str(validation_prompt)
